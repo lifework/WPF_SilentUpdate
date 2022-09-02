@@ -6,7 +6,20 @@
         xmlns:local="clr-namespace:WPF_SilentUpdate"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Location: " />
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding AssemblyLocation, Mode=OneWay}" Height="100" TextWrapping="Wrap"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Version: " />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding AssemblyVersion, Mode=OneWay}" Height="100" TextWrapping="Wrap"/>
     </Grid>
 </Window>

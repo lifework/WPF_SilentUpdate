@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +25,16 @@ namespace WPF_SilentUpdate
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainWindowViewModel();
         }
+    }
+
+    internal class MainWindowViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public Assembly ExecutingAssembly => Assembly.GetExecutingAssembly();
+        public string AssemblyLocation => ExecutingAssembly.Location;
+        public string AssemblyVersion => ExecutingAssembly.GetName().Version?.ToString() ?? "Unknown";
     }
 }
