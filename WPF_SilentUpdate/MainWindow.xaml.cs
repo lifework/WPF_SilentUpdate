@@ -30,14 +30,13 @@ namespace WPF_SilentUpdate
             this.DataContext = new MainWindowViewModel();
         }
 
-        private void OnRunButtonClicked(object sender, RoutedEventArgs e)
+        public void OnRunButtonClicked(object sender, RoutedEventArgs e)
         {
             uint res = RelaunchHelper.RegisterApplicationRestart(null, RelaunchHelper.RestartFlags.NONE);
-            Task.Run(() =>
-            {
-                Thread.Sleep(61 * 1000); // over 60 secs
-                System.Environment.Exit(1);
-            });
+            var x = 1;
+            var y = 0;
+            var z = x / y;
+            System.Environment.Exit(1);
         }
     }
 
@@ -45,13 +44,13 @@ namespace WPF_SilentUpdate
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public int ProcessId => System.Diagnostics.Process.GetCurrentProcess().Id;
+        public int ProcessId => Environment.ProcessId;
         public Assembly ExecutingAssembly => Assembly.GetExecutingAssembly();
         public string AssemblyLocation => ExecutingAssembly.Location;
         public string AssemblyVersion => ExecutingAssembly.GetName().Version?.ToString() ?? "Unknown";
     }
 
-    class RelaunchHelper
+    internal class RelaunchHelper
     {
         #region Restart Manager Methods
         /// <summary>
