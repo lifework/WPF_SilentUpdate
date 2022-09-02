@@ -6,25 +6,17 @@
         xmlns:local="clr-namespace:WPF_SilentUpdate"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <StackPanel Margin="20">
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+    
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="Process Id: "/>
+        <TextBox Text="{Binding ProcessId, Mode=OneWay}" Height="20" Margin="0,0,0,10"/>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Location: " />
-            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding AssemblyLocation, Mode=OneWay}" Height="100" TextWrapping="Wrap"/>
+        <TextBlock Text="Version: " />
+        <TextBox Text="{Binding AssemblyVersion, Mode=OneWay}" Height="20" Margin="0,0,0,10"/>
 
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Version: " />
-            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding AssemblyVersion, Mode=OneWay}" Height="100" TextWrapping="Wrap"/>
-        </Grid>
-        <StackPanel Margin="10">
-            <Button Width="200" Height="50" Click="OnRunButtonClicked" Content="再起動する" />
-        </StackPanel>
+        <TextBlock Text="Location: " />
+        <TextBox Text="{Binding AssemblyLocation, Mode=OneWay}" Height="100" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+        <Button Width="200" Height="50" Click="OnRunButtonClicked" Content="再起動する" />
     </StackPanel>
 </Window>

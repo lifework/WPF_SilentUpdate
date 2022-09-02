@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,6 +33,11 @@ namespace WPF_SilentUpdate
         private void OnRunButtonClicked(object sender, RoutedEventArgs e)
         {
             uint res = RelaunchHelper.RegisterApplicationRestart(null, RelaunchHelper.RestartFlags.NONE);
+            Task.Run(() =>
+            {
+                Thread.Sleep(61 * 1000); // over 60 secs
+                System.Environment.Exit(1);
+            });
         }
     }
 
@@ -39,6 +45,7 @@ namespace WPF_SilentUpdate
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        public int ProcessId => System.Diagnostics.Process.GetCurrentProcess().Id;
         public Assembly ExecutingAssembly => Assembly.GetExecutingAssembly();
         public string AssemblyLocation => ExecutingAssembly.Location;
         public string AssemblyVersion => ExecutingAssembly.GetName().Version?.ToString() ?? "Unknown";
