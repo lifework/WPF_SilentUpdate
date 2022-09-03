@@ -7,13 +7,13 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="4a2aca7b-3a22-4798-aaa5-3c7bdcaef431"
-    Publisher="CN=kobayashi"
+    Name="A4B91446.18967FDE5EFB2"
+    Publisher="CN=90254071-376F-42E3-B68E-058FC1D59557"
     Version="1.0.0.0" />
 
   <Properties>
-    <DisplayName>msix-packaging</DisplayName>
-    <PublisherDisplayName>kobayashi</PublisherDisplayName>
+    <DisplayName>WPF_SilentUpdate</DisplayName>
+    <PublisherDisplayName>株式会社スタメン</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
@@ -31,7 +31,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="msix-packaging"
+        DisplayName="WPF_SilentUpdate"
         Description="msix-packaging"
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
