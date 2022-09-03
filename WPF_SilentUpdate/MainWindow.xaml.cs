@@ -34,9 +34,6 @@ namespace WPF_SilentUpdate
         {
             uint res = RelaunchHelper.RegisterApplicationRestart(null, RelaunchHelper.RestartFlags.NONE);
             await Task.Run(() => Thread.Sleep(65 * 1000));
-            var x = 1;
-            var y = 0;
-            var z = x / y;
             System.Environment.Exit(1);
         }
     }
