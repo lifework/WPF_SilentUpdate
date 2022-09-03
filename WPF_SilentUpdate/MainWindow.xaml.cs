@@ -30,9 +30,10 @@ namespace WPF_SilentUpdate
             this.DataContext = new MainWindowViewModel();
         }
 
-        public void OnRunButtonClicked(object sender, RoutedEventArgs e)
+        public async void OnRestartButtonClicked(object sender, RoutedEventArgs e)
         {
             uint res = RelaunchHelper.RegisterApplicationRestart(null, RelaunchHelper.RestartFlags.NONE);
+            await Task.Run(() => Thread.Sleep(65 * 1000));
             var x = 1;
             var y = 0;
             var z = x / y;
@@ -50,6 +51,8 @@ namespace WPF_SilentUpdate
         public string AssemblyVersion => ExecutingAssembly.GetName().Version?.ToString() ?? "Unknown";
     }
 
+    // アプリケーションの再起動の登録
+    // https://docs.microsoft.com/ja-jp/windows/win32/recovery/registering-for-application-restart
     internal class RelaunchHelper
     {
         #region Restart Manager Methods

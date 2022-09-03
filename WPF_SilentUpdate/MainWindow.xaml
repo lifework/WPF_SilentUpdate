@@ -17,6 +17,6 @@
         <TextBlock Text="Location: " />
         <TextBox Text="{Binding AssemblyLocation, Mode=OneWay}" Height="100" TextWrapping="Wrap" Margin="0,0,0,10"/>
 
-        <Button Width="200" Height="50" Click="OnRunButtonClicked" Content="再起動する" />
+        <Button Width="200" Height="50" Click="OnRestartButtonClicked" Content="再起動する" />
     </StackPanel>
 </Window>
