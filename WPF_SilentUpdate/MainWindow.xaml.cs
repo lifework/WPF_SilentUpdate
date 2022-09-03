@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace WPF_SilentUpdate
 {
@@ -24,10 +25,11 @@ namespace WPF_SilentUpdate
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowViewModel ViewModel = new MainWindowViewModel();
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowViewModel();
+            this.DataContext = ViewModel;
         }
 
         public async void OnRestartButtonClicked(object sender, RoutedEventArgs e)
@@ -42,6 +44,11 @@ namespace WPF_SilentUpdate
             RelaunchHelper.RegisterApplicationRestart();
             await StoreManager.SilentDownloadAndInstallUpdatesAsync();
         }
+    }
+
+    interface ILogger
+    {
+        void WriteLine(string message);
     }
 
     internal class MainWindowViewModel : INotifyPropertyChanged
