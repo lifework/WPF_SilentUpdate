@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Regions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,24 +13,23 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 
-namespace WPF_SilentUpdate
+namespace WPF_SilentUpdate.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainWindowViewModel ViewModel = new MainWindowViewModel();
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = ViewModel;
         }
 
         public async void OnRestartButtonClicked(object sender, RoutedEventArgs e)
@@ -44,20 +44,5 @@ namespace WPF_SilentUpdate
             RelaunchHelper.RegisterApplicationRestart();
             await StoreManager.SilentDownloadAndInstallUpdatesAsync();
         }
-    }
-
-    interface ILogger
-    {
-        void WriteLine(string message);
-    }
-
-    internal class MainWindowViewModel : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public int ProcessId => Environment.ProcessId;
-        public Assembly ExecutingAssembly => Assembly.GetExecutingAssembly();
-        public string AssemblyLocation => ExecutingAssembly.Location;
-        public string AssemblyVersion => ExecutingAssembly.GetName().Version?.ToString() ?? "Unknown";
     }
 }
