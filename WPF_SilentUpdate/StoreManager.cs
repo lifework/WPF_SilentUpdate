@@ -11,8 +11,6 @@ namespace WPF_SilentUpdate
 {
     class StoreManager
     {
-        public static ILogger? Logger { get; set; }
-
         public static void CheckUpdateAndInstall()
         {
             Task.Run(async () =>
