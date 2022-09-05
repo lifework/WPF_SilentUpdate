@@ -32,16 +32,13 @@ namespace WPF_SilentUpdate.Views
             InitializeComponent();
         }
 
-        public async void OnRestartButtonClicked(object sender, RoutedEventArgs e)
+        public void OnRestartButtonClicked(object sender, RoutedEventArgs e)
         {
-            RelaunchHelper.RegisterApplicationRestart();
-            await Task.Run(() => Thread.Sleep(65 * 1000));
             System.Environment.Exit(1);
         }
 
         public async void OnUpdateApplicationButtonClicked(object sender, RoutedEventArgs e)
         {
-            RelaunchHelper.RegisterApplicationRestart();
             await StoreManager.SilentDownloadAndInstallUpdatesAsync();
         }
     }

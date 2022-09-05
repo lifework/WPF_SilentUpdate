@@ -19,7 +19,7 @@ namespace WPF_SilentUpdate
                 {
                     try
                     {
-                        Thread.Sleep(60 * 1000);
+                        Thread.Sleep(65 * 1000);
                         await SilentDownloadAndInstallUpdatesAsync();
                     }
                     catch (Exception e)
@@ -31,7 +31,7 @@ namespace WPF_SilentUpdate
         }
 
 
-        public static async Task<bool> SilentDownloadAndInstallUpdatesAsync()
+        public static async Task<bool> SilentDownloadAndInstallUpdatesAsync(bool preDownload = false)
         {
 
             StoreContext context = StoreContext.GetDefault();
@@ -46,13 +46,22 @@ namespace WPF_SilentUpdate
                 return false;
             }
 
+            if (preDownload)
+            {
+                StorePackageUpdateResult downloadResult = await context.TrySilentDownloadStorePackageUpdatesAsync(storePackageUpdates);
+                if (downloadResult.OverallState != StorePackageUpdateState.Completed)
+                {
+                    return false;
+                }
+            }
+
             StorePackageUpdateResult installResult = await context.TrySilentDownloadAndInstallStorePackageUpdatesAsync(storePackageUpdates);
             if (installResult.OverallState != StorePackageUpdateState.Completed)
             {
                 return false;
             }
             
-            System.Environment.Exit(1);
+            //System.Environment.Exit(1);
             return true;
         }
     }

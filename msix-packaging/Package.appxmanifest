@@ -9,7 +9,7 @@
   <Identity
     Name="A4B91446.18967FDE5EFB2"
     Publisher="CN=90254071-376F-42E3-B68E-058FC1D59557"
-    Version="0.5.7.0" />
+    Version="1.3.14.0" />
 
   <Properties>
     <DisplayName>WPF_SilentUpdate</DisplayName>

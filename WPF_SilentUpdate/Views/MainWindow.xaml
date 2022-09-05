@@ -7,21 +7,26 @@
         xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="320" Width="480">
     
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Process Id: "/>
-        <TextBox Text="{Binding ProcessId, Mode=OneWay}" Height="20" Margin="0,0,0,10"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Process Id: "/>
+            <TextBox Text="{Binding ProcessId, Mode=OneWay}" Height="20" Margin="0,0,20,10" Width="50" TextAlignment="Right"/>
 
-        <TextBlock Text="Version: " />
-        <TextBox Text="{Binding AssemblyVersion, Mode=OneWay}" Height="20" Margin="0,0,0,10"/>
+            <TextBlock Text="Version: " />
+            <TextBox Text="{Binding AssemblyVersion, Mode=OneWay}" Height="20" Margin="0,0,20,10" Width="50" TextAlignment="Right" />
 
-        <TextBlock Text="Location: " />
-        <TextBox Text="{Binding AssemblyLocation, Mode=OneWay}" Height="20" TextWrapping="Wrap" Margin="0,0,0,10"/>
+            <TextBlock Text="Uptime: " />
+            <TextBox Text="{Binding UptimeSeconds.Value, Mode=OneWay}" Height="20" Margin="0,0,20,10" Width="50" TextAlignment="Right" />
+        </StackPanel>
+
+        <TextBlock Text="Assembly Location: " />
+        <TextBox Text="{Binding AssemblyLocation, Mode=OneWay}" Height="50" TextWrapping="Wrap" Margin="0,0,0,30"/>
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Width="200" Height="50" Click="OnRestartButtonClicked" Content="再起動する" Margin="5" />
-            <Button Width="200" Height="50" Click="OnUpdateApplicationButtonClicked" Content="アップデート" Margin="5" />
+            <Button Width="150" Height="30" Click="OnRestartButtonClicked" Content="再起動する" Margin="5" />
+            <Button Width="150" Height="30" Click="OnUpdateApplicationButtonClicked" Content="アップデート" Margin="5" />
         </StackPanel>
     </StackPanel>
 </Window>
