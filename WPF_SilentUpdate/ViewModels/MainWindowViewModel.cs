@@ -21,7 +21,8 @@ namespace WPF_SilentUpdate.ViewModels
         public int ProcessId => Environment.ProcessId;
         public Assembly ExecutingAssembly => Assembly.GetExecutingAssembly();
         public string AssemblyLocation => ExecutingAssembly.Location;
-        public string AssemblyVersion => ExecutingAssembly.GetName().Version?.ToString() ?? "Unknown";
+        public string AssemblyVersion => $"{ExecutingAssembly.GetName().Version?.ToString() ?? "Unknown"} / {PackageVersion}";
+        public string PackageVersion => StoreManager.PackageVersion();
 
         public ReactivePropertySlim<int> UptimeSeconds { get; set; } = new(0);
 
