@@ -61,7 +61,7 @@ namespace WPF_SilentUpdate
                 return false;
             }
             
-            System.Environment.Exit(1);
+            //System.Environment.Exit(1);
             return true;
         }
     }

@@ -13,9 +13,6 @@ using WPF_SilentUpdate.ViewModels;
 
 namespace WPF_SilentUpdate
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : PrismApplication
     {
         protected override Window CreateShell()
