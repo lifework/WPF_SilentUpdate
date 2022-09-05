@@ -23,7 +23,6 @@ namespace WPF_SilentUpdate.ViewModels
         public string AssemblyLocation => ExecutingAssembly.Location;
         public string AssemblyVersion => $"{ExecutingAssembly.GetName().Version?.ToString() ?? "Unknown"} / {PackageVersion}";
         public string PackageVersion => StoreManager.PackageVersion();
-
         public ReactivePropertySlim<int> UptimeSeconds { get; set; } = new(0);
 
         public void UpdateUptimeAsync()
