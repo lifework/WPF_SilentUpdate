@@ -7,18 +7,18 @@
         xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="MainWindow" Height="320" Width="480">
+        Title="MainWindow" Height="320" Width="600">
     
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Process Id: "/>
-            <TextBox Text="{Binding ProcessId, Mode=OneWay}" Height="20" Margin="0,0,20,10" Width="50" TextAlignment="Right"/>
+            <TextBox Text="{Binding ProcessId, Mode=OneWay}" Height="20" Margin="0,0,20,10" Width="100" TextAlignment="Right"/>
 
             <TextBlock Text="Version: " />
-            <TextBox Text="{Binding AssemblyVersion, Mode=OneWay}" Height="20" Margin="0,0,20,10" Width="50" TextAlignment="Right" />
+            <TextBox Text="{Binding AssemblyVersion, Mode=OneWay}" Height="20" Margin="0,0,20,10" Width="100" TextAlignment="Right" />
 
             <TextBlock Text="Uptime: " />
-            <TextBox Text="{Binding UptimeSeconds.Value, Mode=OneWay}" Height="20" Margin="0,0,20,10" Width="50" TextAlignment="Right" />
+            <TextBox Text="{Binding UptimeSeconds.Value, Mode=OneWay}" Height="20" Margin="0,0,20,10" Width="100" TextAlignment="Right" />
         </StackPanel>
 
         <TextBlock Text="Assembly Location: " />
