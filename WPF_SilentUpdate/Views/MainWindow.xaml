@@ -25,8 +25,8 @@
         <TextBox Text="{Binding AssemblyLocation, Mode=OneWay}" Height="50" TextWrapping="Wrap" Margin="0,0,0,30"/>
         
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Width="150" Height="30" Click="OnRestartButtonClicked" Content="再起動する" Margin="5" />
-            <Button Width="150" Height="30" Click="OnUpdateApplicationButtonClicked" Content="アップデート" Margin="5" />
+            <Button Width="150" Height="30" Command="{Binding RestartCommand}" Content="再起動する" Margin="5" />
+            <Button Width="150" Height="30" Command="{Binding UpdateCommand}" Content="アップデート" Margin="5" />
         </StackPanel>
     </StackPanel>
 </Window>
