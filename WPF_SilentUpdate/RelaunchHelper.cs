@@ -9,10 +9,18 @@ namespace WPF_SilentUpdate
 {
     // アプリケーションの再起動の登録
     // https://docs.microsoft.com/ja-jp/windows/win32/recovery/registering-for-application-restart
+    //
+    // https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-registerapplicationrestart
+    // Remarks に記載のことが大事。
+    //
+    // デスクトップアプリのリスタートマネージャー2(アプリ停止のためのウィンドウメッセージ)
+    // https://nishy-software.com/ja/dev-sw/app-restart-manager-2/
     class RelaunchHelper
     {
+        // 一般的な HRESULT 値
+        // https://docs.microsoft.com/ja-jp/windows/win32/seccrypto/common-hresult-values?redirectedfrom=MSDN
         public static uint RegisterApplicationRestart()
-        {
+        {          
             return RelaunchHelper.RegisterApplicationRestart(null, RelaunchHelper.RestartFlags.NONE);
         }
 

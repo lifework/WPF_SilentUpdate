@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using WPF_SilentUpdate.Views;
 using WPF_SilentUpdate.ViewModels;
+using System.Diagnostics;
 
 namespace WPF_SilentUpdate
 {
@@ -27,7 +28,10 @@ namespace WPF_SilentUpdate
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            RelaunchHelper.RegisterApplicationRestart();
+
+            uint hresult = RelaunchHelper.RegisterApplicationRestart();
+            Console.WriteLine($"RelaunchHelper.RegisterApplicationRestart: {hresult}");
+
             StoreManager.CheckUpdateAndInstall();
         }
     }
