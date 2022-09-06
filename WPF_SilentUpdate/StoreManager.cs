@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Windows.ApplicationModel;
+using Windows.Management.Deployment;
 using Windows.Services.Store;
 
 namespace WPF_SilentUpdate
@@ -31,7 +33,7 @@ namespace WPF_SilentUpdate
         }
 
 
-        public static async Task<bool> SilentDownloadAndInstallUpdatesAsync(bool preDownload = false)
+        public static async Task<bool> SilentDownloadAndInstallUpdatesAsync(bool preDownload = true)
         {
 
             StoreContext context = StoreContext.GetDefault();
@@ -60,9 +62,39 @@ namespace WPF_SilentUpdate
             {
                 return false;
             }
-            
-            //System.Environment.Exit(1);
+
             return true;
+        }
+
+
+        public static readonly string PackageName = "A4B91446.18967FDE5EFB2";
+
+        public static string PackageVersion()
+        {
+
+            var version = InstalledPackageVersion();
+            if (version != null)
+            {
+                return $"{version?.Major}.{version?.Minor}.{version?.Build}";
+            }
+            return "0.0.0";
+        }
+
+        public static Package? InstalledPackage()
+        {
+            var manager = new PackageManager();
+            var packages = manager.FindPackagesForUser(string.Empty);
+            Package? package = packages.FirstOrDefault(x => x.Id.Name == PackageName);
+            if (package != null)
+            {
+                package = manager.FindPackageForUser(string.Empty, package.Id.FullName);
+            }
+            return package;
+        }
+
+        public static PackageVersion? InstalledPackageVersion()
+        {
+            return InstalledPackage()?.Id.Version;
         }
     }
 }
