@@ -33,7 +33,7 @@ namespace WPF_SilentUpdate
         }
 
 
-        public static async Task<bool> SilentDownloadAndInstallUpdatesAsync(bool preDownload = false)
+        public static async Task<bool> SilentDownloadAndInstallUpdatesAsync(bool preDownload = true)
         {
 
             StoreContext context = StoreContext.GetDefault();
@@ -62,8 +62,7 @@ namespace WPF_SilentUpdate
             {
                 return false;
             }
-            
-            //System.Environment.Exit(1);
+
             return true;
         }
 
